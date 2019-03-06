@@ -15,6 +15,6 @@ spec:
   values:
     image:
       repository: nginx
-      tag: stable
+      tag: 1.14-perl
       pullPolicy: IfNotPresent
     serviceType: ClusterIP
