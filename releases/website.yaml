@@ -1,0 +1,17 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: website
+  namespace: multipl
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: website
+  chart:
+    git: ssh://git@github.com/multipl/DEPLOY
+    ref: master
+    path: charts/website
+  values:
+    image:
+      tag: latest
