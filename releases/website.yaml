@@ -9,6 +9,12 @@ metadata:
 spec:
   releaseName: website
   chart:
-    git: ssh://git@github.com/multipl/DEPLOY
+    git: ssh://git@github.com/multiplio/DEPLOY
     ref: master
     path: charts/website
+  values:
+    image:
+      repository: nginx
+      tag: stable
+      pullPolicy: IfNotPresent
+    serviceType: ClusterIP
