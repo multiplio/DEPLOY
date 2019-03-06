@@ -5,7 +5,8 @@ metadata:
   name: website
   namespace: multipl
   annotations:
-    flux.weave.works/automated: "true"
+    flux.weave.works/automated: "false"
+    flux.weave.works/tag.chart-image: glob:1.0.*
 spec:
   releaseName: website
   chart:
