@@ -14,7 +14,7 @@ spec:
     path: charts/website
   values:
     image:
-      repository: nginx
-      tag: 1.14-perl
+      repository: gcr.io/multipl/website
+      tag: latest
       pullPolicy: IfNotPresent
     serviceType: ClusterIP
