@@ -15,6 +15,6 @@ spec:
   values:
     image:
       repository: gcr.io/multipl/website
-      tag: latest
+      tag: c0ae2e8d5443107ae2e0c08eb4674caff7c30fe9
       pullPolicy: IfNotPresent
     serviceType: ClusterIP
