@@ -17,4 +17,4 @@ spec:
       repository: gcr.io/multipl/website
       tag: latest
       pullPolicy: IfNotPresent
-    serviceType: ClusterIP
+    serviceType: NodePort
