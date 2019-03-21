@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: multipl
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-production
+spec:
+  tls:
+  - hosts:
+    - cast.multipl.io
+    secretName: letsencrypt-production
+  rules:
+  - host: cast.multipl.io
+    http:
+      paths:
+      - backend:
+          serviceName: cast-website
+          servicePort: 7000
