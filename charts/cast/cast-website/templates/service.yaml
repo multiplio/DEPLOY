@@ -13,7 +13,7 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.container.port }}
       protocol: {{ .Values.container.protocol }}
-      name: {{ .Values.container.port }}
+      name: main
   selector:
     app.kubernetes.io/name: {{ include "cast-website.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
