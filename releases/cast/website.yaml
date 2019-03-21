@@ -3,7 +3,7 @@ apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: website
-  namespace: multipl
+  namespace: cast
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: semver:~1
@@ -12,9 +12,9 @@ spec:
   chart:
     git: ssh://git@github.com/multiplio/DEPLOY
     ref: master
-    path: charts/website
+    path: charts/cast/website
   values:
     image:
-      repository: gcr.io/multipl/website
-      tag: 1.0.1
+      repository: gcr.io/multipl/cast-website
+      tag: stable
       pullPolicy: IfNotPresent
