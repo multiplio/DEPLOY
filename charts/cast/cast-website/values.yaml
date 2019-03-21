@@ -14,10 +14,11 @@ fullnameOverride: ""
 
 container:
   port: 80
+  protocol: TCP
 
 service:
   type: ClusterIP
-  port: 80
+  port: 7000
 
 ingress:
   enabled: false
