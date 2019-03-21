@@ -3,7 +3,7 @@ apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: cast-website
-  namespace: cast
+  namespace: multipl
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: semver:~1
