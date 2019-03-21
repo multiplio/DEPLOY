@@ -2,13 +2,13 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: website
+  name: cast-website
   namespace: cast
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: semver:~1
 spec:
-  releaseName: website
+  releaseName: cast-website
   chart:
     git: ssh://git@github.com/multiplio/DEPLOY
     ref: master
