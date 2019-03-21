@@ -12,6 +12,7 @@ spec:
   - hosts:
     - multipl.io
     - www.multipl.io
+    - cast.multipl.io
     secretName: letsencrypt-production
   rules:
   - host: multipl.io
@@ -19,4 +20,10 @@ spec:
       paths:
       - backend:
           serviceName: website
+          servicePort: 7000
+  - host: cast.multipl.io
+    http:
+      paths:
+      - backend:
+          serviceName: cast-website
           servicePort: 7000
