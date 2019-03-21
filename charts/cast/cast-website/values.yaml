@@ -1,11 +1,11 @@
-# Default values for website.
+# Default values for cast-website.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: ""
+  repository: nginx
   tag: stable
   pullPolicy: IfNotPresent
 
@@ -18,6 +18,13 @@ container:
 service:
   type: ClusterIP
   port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  paths: []
+  hosts: []
+  tls: []
 
 resources: {}
 

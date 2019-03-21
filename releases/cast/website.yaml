@@ -12,7 +12,7 @@ spec:
   chart:
     git: ssh://git@github.com/multiplio/DEPLOY
     ref: master
-    path: charts/cast/website
+    path: charts/cast/cast-website
   values:
     image:
       repository: gcr.io/multipl/cast-website
