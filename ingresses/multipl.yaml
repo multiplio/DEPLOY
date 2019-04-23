@@ -24,6 +24,18 @@ spec:
   - host: cast.multipl.io
     http:
       paths:
+      - path: /identity
+          serviceName: cast-user
+          servicePort: 7000
+      - path: /auth/twitter
+          serviceName: cast-user
+          servicePort: 7000
+      - path: /auth/twitter/callback
+          serviceName: cast-user
+          servicePort: 7000
+      - path: /logout
+          serviceName: cast-user
+          servicePort: 7000
       - backend:
           serviceName: cast-website
           servicePort: 7000
