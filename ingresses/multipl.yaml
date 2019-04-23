@@ -25,15 +25,19 @@ spec:
     http:
       paths:
       - path: /identity
+        backend:
           serviceName: cast-user
           servicePort: 7000
       - path: /auth/twitter
+        backend:
           serviceName: cast-user
           servicePort: 7000
       - path: /auth/twitter/callback
+        backend:
           serviceName: cast-user
           servicePort: 7000
       - path: /logout
+        backend:
           serviceName: cast-user
           servicePort: 7000
       - backend:
