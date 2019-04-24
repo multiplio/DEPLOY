@@ -1,0 +1,21 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: cast-db-users
+  namespace: multipl
+  annotations:
+    flux.weave.works/automated: "false"
+    flux.weave.works/tag.chart-image: semver:~4.0
+spec:
+  releaseName: cast-db-users
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: mongodb
+    version: 4.9.0
+  values:
+    image:
+      repository: bitnami/mongodb
+      tag: 4.0.3
+      pullPolicy: IfNotPresent
+    usePassword: true
