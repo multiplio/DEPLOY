@@ -27,7 +27,7 @@ spec:
             - name: main
               containerPort: 3000
               protocol: TCP
-          - env:
+          env:
             - name: PROGRAM_ALIAS
               valueFrom:
                 configMapKeyRef:

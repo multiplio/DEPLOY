@@ -34,6 +34,13 @@ environment:
 
 mailgun_address: cast-user-mailgun:8000
 
+db_address: cast-db-users-mongodb:27017
+
+secret:
+  cookie: cast-cookie
+  twitter: cast-twitter
+  db_password: cast-db-users-mongodb
+
 resources: {}
 
 nodeSelector: {}
