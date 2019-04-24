@@ -27,6 +27,42 @@ spec:
             - name: main
               containerPort: 3000
               protocol: TCP
+          - env:
+            - name: PROGRAM_ALIAS
+              valueFrom:
+                configMapKeyRef:
+                  key: PROGRAM_ALIAS
+                  name: {{ include "mailgun.fullname" . }}
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  key: NODE_ENV
+                  name: {{ include "mailgun.fullname" . }}
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: PORT
+                  name: {{ include "mailgun.fullname" . }}
+            - name: LOG_FILE
+              valueFrom:
+                configMapKeyRef:
+                  key: LOG_FILE
+                  name: {{ include "mailgun.fullname" . }}
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  key: LOG_LEVEL
+                  name: {{ include "mailgun.fullname" . }}
+            - name: MAILGUN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret | quote }}
+                  key: api-key
+            - name: MAILGUN_DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret | quote }}
+                  key: domain
           readinessProbe:
             httpGet:
               path: /ready
