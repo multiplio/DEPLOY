@@ -39,10 +39,10 @@ spec:
                   key: NODE_ENV
                   name: {{ include "mailgun.fullname" . }}
             - name: PORT
-              value: 3000
+              value: "3000"
 
             - name: LOG_FILE
-              value: false
+              value: "false"
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:

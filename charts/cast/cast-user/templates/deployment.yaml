@@ -39,10 +39,10 @@ spec:
                   key: NODE_ENV
                   name: {{ include "cast-user.fullname" . }}
             - name: PORT
-              value: 7000
+              value: "7000"
 
             - name: LOG_FILE
-              value: false
+              value: "false"
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
@@ -75,15 +75,15 @@ spec:
                   key: callback
 
             - name: DATABASE_NAME
-              value: users
+              value: "users"
             - name: DATABASE_PROTOCOL
-              value: mongodb
+              value: "mongodb"
             - name: DATABASE_ADDRESS
               value: {{ .Values.db_address }}
             - name: DATABASE_OPTIONS
               value: "authSource=admin"
             - name: DATABASE_USER
-              value: root
+              value: "root"
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
