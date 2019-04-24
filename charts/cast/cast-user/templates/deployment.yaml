@@ -39,15 +39,10 @@ spec:
                   key: NODE_ENV
                   name: {{ include "cast-user.fullname" . }}
             - name: PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: PORT
-                  name: {{ include "cast-user.fullname" . }}
+              value: 7000
+
             - name: LOG_FILE
-              valueFrom:
-                configMapKeyRef:
-                  key: LOG_FILE
-                  name: {{ include "cast-user.fullname" . }}
+              value: false
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:

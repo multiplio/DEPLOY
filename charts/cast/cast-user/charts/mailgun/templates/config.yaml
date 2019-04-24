@@ -10,6 +10,4 @@ metadata:
 data:
   PROGRAM_ALIAS: {{ .Values.environment.PROGRAM_ALIAS | quote }}
   NODE_ENV: {{ .Values.environment.NODE_ENV | quote }}
-  PORT: {{ .Values.environment.PORT | quote }}
-  LOG_FILE: {{ .Values.environment.LOG_FILE | quote }}
   LOG_LEVEL: {{ .Values.environment.LOG_LEVEL | quote }}

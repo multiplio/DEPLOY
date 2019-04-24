@@ -39,20 +39,16 @@ spec:
                   key: NODE_ENV
                   name: {{ include "mailgun.fullname" . }}
             - name: PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: PORT
-                  name: {{ include "mailgun.fullname" . }}
+              value: 3000
+
             - name: LOG_FILE
-              valueFrom:
-                configMapKeyRef:
-                  key: LOG_FILE
-                  name: {{ include "mailgun.fullname" . }}
+              value: false
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
                   key: LOG_LEVEL
                   name: {{ include "mailgun.fullname" . }}
+
             - name: MAILGUN_API_KEY
               valueFrom:
                 secretKeyRef:
@@ -63,10 +59,11 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secret | quote }}
                   key: domain
+
           readinessProbe:
             httpGet:
               path: /ready
-              port: http
+              port: 3000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
