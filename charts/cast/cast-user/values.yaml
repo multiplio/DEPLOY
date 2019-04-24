@@ -22,6 +22,18 @@ ingress:
   hosts: []
   tls: []
 
+environment:
+  NODE_ENV: production
+  PROGRAM_ALIAS: login
+  PORT: 7000
+
+  #level=debug|info
+  LOG_LEVEL: debug
+  #file=true|false
+  LOG_FILE: false
+
+mailgun_address: cast-user-mailgun:8000
+
 resources: {}
 
 nodeSelector: {}
