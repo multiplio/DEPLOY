@@ -15,7 +15,7 @@ fullnameOverride: ""
 paths:
   identity: "/identity/"
   twitter: "/auth/twitter/"
-  post: "/publish/"
+  post: "/publish"
 
 container:
   port: 80
