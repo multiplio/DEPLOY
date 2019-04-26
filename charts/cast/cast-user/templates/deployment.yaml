@@ -74,21 +74,21 @@ spec:
                   name: {{ .Values.secret.twitter | quote }}
                   key: callback
 
-            - name: DATABASE_NAME
-              value: "users"
             - name: DATABASE_PROTOCOL
               value: "mongodb"
             - name: DATABASE_ADDRESS
               value: {{ .Values.db_address }}
             - name: DATABASE_OPTIONS
-              value: "authSource=admin"
+              value: "retryWrites=true"
+            - name: DATABASE_NAME
+              value: "users"
             - name: DATABASE_USER
-              value: "root"
+              value: "user"
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secret.db_password | quote }}
-                  key: mongodb-root-password
+                  key: mongodb-password
 
           readinessProbe:
             httpGet:
