@@ -27,17 +27,6 @@ spec:
             - name: http
               containerPort: {{ .Values.container.port }}
               protocol: {{ .Values.container.protocol }}
-          env:
-            - name: NODE_ENV
-              value: "production"
-
-            - name: REACT_APP_GET_IDENTITY_PATH
-              value: {{ .Values.paths.identity | quote }}
-            - name: REACT_APP_TWITTER_LOGIN_PATH
-              value: {{ .Values.paths.twitter | quote }}
-            - name: REACT_APP_POST_PATH
-              value: {{ .Values.paths.post | quote }}
-
           readinessProbe:
             httpGet:
               path: /healthcheck

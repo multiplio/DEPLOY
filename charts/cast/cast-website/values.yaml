@@ -12,11 +12,6 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
-paths:
-  identity: "/identity/"
-  twitter: "/auth/twitter/"
-  post: "/publish"
-
 container:
   port: 80
   protocol: TCP
