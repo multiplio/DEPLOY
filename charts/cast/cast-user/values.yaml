@@ -45,3 +45,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+mailgun:
+  replicaCount: 1
+  image:
+    repository: gcr.io/multipl/mailgun
+    tag: stable
+    pullPolicy: IfNotPresent

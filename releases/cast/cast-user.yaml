@@ -18,3 +18,8 @@ spec:
       repository: gcr.io/multipl/cast-user
       tag: 1.1.0
       pullPolicy: IfNotPresent
+    mailgun:
+      image:
+        repository: gcr.io/multipl/mailgun
+        tag: stable
+        pullPolicy: IfNotPresent
