@@ -22,5 +22,5 @@ spec:
     mailgun:
       image:
         repository: gcr.io/multipl/mailgun
-        tag: a3381d77621abbb946d2b1595a808d602c175b7c
+        tag: 1.0.0
         pullPolicy: IfNotPresent
