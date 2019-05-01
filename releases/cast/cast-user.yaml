@@ -7,6 +7,7 @@ metadata:
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: semver:~1
+    flux.weave.works/tag.mailgun: semver:~1
 spec:
   releaseName: cast-user
   chart:
