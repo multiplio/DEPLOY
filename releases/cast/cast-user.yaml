@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: gcr.io/multipl/cast-user
-      tag: 1.1.0
+      tag: 1.1.1
       pullPolicy: IfNotPresent
     mailgun:
       image:
