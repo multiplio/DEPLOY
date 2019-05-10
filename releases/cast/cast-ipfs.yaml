@@ -14,7 +14,4 @@ spec:
     name: ipfs
     version: 0.2.2
   values:
-    image:
-      repository: ipfs/go-ipfs
-      tag: 0.4.20
-      pullPolicy: IfNotPresent
+    image: ipfs/go-ipfs:v0.4.20
