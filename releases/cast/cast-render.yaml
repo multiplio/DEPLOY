@@ -8,7 +8,7 @@ metadata:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: semver:~1
 spec:
-  releaseName: cast-user
+  releaseName: cast-render
   chart:
     git: ssh://git@github.com/multiplio/DEPLOY
     ref: master
