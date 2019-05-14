@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "cast-render.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "cast-render.name" . }}
+    helm.sh/chart: {{ include "cast-render.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 3000
+      protocol: TCP
+      name: main
+  selector:
+    app.kubernetes.io/name: {{ include "cast-render.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
