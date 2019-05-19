@@ -49,6 +49,12 @@ spec:
           serviceName: cast-user-mailgun
           servicePort: 7000
 
+      # cast-render
+      - path: /post/*
+        backend:
+          serviceName: cast-render
+          servicePort: 3000
+
       # Route everything else to website
       - backend:
           serviceName: cast-website
