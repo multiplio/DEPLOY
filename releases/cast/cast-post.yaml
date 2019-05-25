@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: gcr.io/multipl/cast-post
-      tag: stable
+      tag: 1.0.0
       pullPolicy: IfNotPresent
     cast-publish:
       image:
