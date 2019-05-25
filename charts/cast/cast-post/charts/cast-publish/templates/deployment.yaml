@@ -1,0 +1,82 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ include "cast-publish.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "cast-publish.name" . }}
+    helm.sh/chart: {{ include "cast-publish.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "cast-publish.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "cast-publish.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: main
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: PROGRAM_ALIAS
+              value: {{ .Values.environment.PROGRAM_ALIAS | quote }}
+            - name: ADDRESS
+              value: ":3000"
+            - name: POST_URL
+              value: {{ .Values.environment.POST_URL | quote }}
+
+            - name: TWITTER_CONSUMER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.twitter | quote }}
+                  key: consumer-key
+            - name: TWITTER_CONSUMER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.twitter | quote }}
+                  key: consumer-secret
+
+            - name: DATABASE_PROTOCOL
+              value: "mongodb"
+            - name: DATABASE_ADDRESS
+              value: {{ .Values.db_address | quote }}
+            - name: DATABASE_OPTIONS
+              value: "retryWrites=true"
+            - name: DATABASE_NAME
+              value: "users"
+            - name: DATABASE_USER
+              value: "user"
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.db_password | quote }}
+                  key: mongodb-password
+
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: main
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
