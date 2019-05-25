@@ -22,5 +22,5 @@ spec:
     cast-publish:
       image:
         repository: gcr.io/multipl/cast-publish
-        tag: stable
+        tag: 1.0.0
         pullPolicy: IfNotPresent
