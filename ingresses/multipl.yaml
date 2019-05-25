@@ -55,6 +55,12 @@ spec:
           serviceName: cast-render
           servicePort: 3000
 
+      # cast-post
+      - path: /publish/
+        backend:
+          serviceName: cast-post
+          servicePort: 3000
+
       # Route everything else to website
       - backend:
           serviceName: cast-website
