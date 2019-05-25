@@ -1,0 +1,26 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: cast-post
+  namespace: multipl
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.chart-image: semver:~1
+    flux.weave.works/tag.cast-publish: semver:~1
+spec:
+  releaseName: cast-post
+  chart:
+    git: ssh://git@github.com/multiplio/DEPLOY
+    ref: master
+    path: charts/cast/cast-post
+  values:
+    image:
+      repository: gcr.io/multipl/cast-post
+      tag: stable
+      pullPolicy: IfNotPresent
+    cast-publish:
+      image:
+        repository: gcr.io/multipl/cast-publish
+        tag: stable
+        pullPolicy: IfNotPresent
