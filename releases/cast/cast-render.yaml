@@ -16,5 +16,5 @@ spec:
   values:
     image:
       repository: gcr.io/multipl/cast-render
-      tag: 1.0.0
+      tag: 1.0.1
       pullPolicy: IfNotPresent
