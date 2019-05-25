@@ -1,0 +1,55 @@
+# Default values for cast-post.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: gcr.io/multipl/cast-post
+  tag: stable
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 3000
+
+env:
+  PROGRAM_ALIAS: post
+  # LOG_LEVEL: info|debug
+  LOG_LEVEL: info
+
+  ipfs:
+    ADDRESS: cast-ipfs-ipfs
+    PORT: 5001
+    PROTOCOL: http
+
+secret:
+  cookie: cast-cookie
+  db_password: cast-db-users-mongodb
+
+publish_address: cast-post-cast-publish:3000
+db_address: cast-db-users-mongodb:27017
+
+ingress:
+  enabled: false
+  annotations: {}
+  path: /
+  hosts: []
+  tls: []
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+cast-publish:
+  image:
+    repository: gcr.io/multipl/cast-publish
+    tag: stable
+    pullPolicy: IfNotPresent

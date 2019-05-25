@@ -1,0 +1,92 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ include "cast-post.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "cast-post.name" . }}
+    helm.sh/chart: {{ include "cast-post.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "cast-post.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "cast-post.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: PROGRAM_ALIAS
+              value: {{ .Values.env.PROGRAM_ALIAS | quote }}
+            - name: NODE_ENV
+              value: "production"
+            - name: PORT
+              value: "7000"
+
+            - name: LOG_FILE
+              value: "false"
+            - name: LOG_LEVEL
+              value: {{ .Values.env.LOG_LEVEL | quote }}
+
+            - name: COOKIE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.cookie | quote }}
+                  key: value
+
+            - name: IPFS_PROTOCOL
+              value: {{ .Values.env.ipfs.PROTOCOL | quote }}
+            - name: IPFS_ADDRESS
+              value: {{ .Values.env.ipfs.ADDRESS | quote }}
+            - name: IPFS_PORT
+              value: {{ .Values.env.ipfs.PORT | quote }}
+
+            - name: DATABASE_PROTOCOL
+              value: "mongodb"
+            - name: DATABASE_ADDRESS
+              value: {{ .Values.db_address | quote }}
+            - name: DATABASE_OPTIONS
+              value: "retryWrites=true"
+            - name: DATABASE_NAME
+              value: "users"
+            - name: DATABASE_USER
+              value: "user"
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secret.db_password | quote }}
+                  key: mongodb-password
+
+            - name: PUBLISHER_ADDRESS
+              value: {{ .Values.publish_address | quote }}
+
+          ports:
+            - name: main
+              containerPort: 7000
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: main
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
