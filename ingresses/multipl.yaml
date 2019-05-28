@@ -57,7 +57,7 @@ spec:
           servicePort: 3000
 
       # cast-post
-      - path: /publish/
+      - path: /publish
         backend:
           serviceName: cast-post
           servicePort: 3000
