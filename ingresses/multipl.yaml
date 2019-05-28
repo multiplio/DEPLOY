@@ -8,6 +8,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     certmanager.k8s.io/cluster-issuer: letsencrypt-production
+    nginx.org/server-tokens: "false"
 spec:
   tls:
   - hosts:
