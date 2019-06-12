@@ -29,25 +29,16 @@ spec:
               protocol: TCP
           env:
             - name: PROGRAM_ALIAS
-              valueFrom:
-                configMapKeyRef:
-                  key: PROGRAM_ALIAS
-                  name: {{ include "mailgun.fullname" . }}
+              value: {{ .Values.env.PROGRAM_ALIAS | quote }}
             - name: NODE_ENV
-              valueFrom:
-                configMapKeyRef:
-                  key: NODE_ENV
-                  name: {{ include "mailgun.fullname" . }}
+              value: "production"
             - name: PORT
               value: "3000"
 
             - name: LOG_FILE
               value: "false"
             - name: LOG_LEVEL
-              valueFrom:
-                configMapKeyRef:
-                  key: LOG_LEVEL
-                  name: {{ include "mailgun.fullname" . }}
+              value: {{ .Values.env.LOG_LEVEL | quote }}
 
             - name: MAILGUN_API_KEY
               valueFrom:
