@@ -29,7 +29,7 @@ environment:
   #level=debug|info
   LOG_LEVEL: debug
 
-mailgun_address: cast-user-mailgun:8000
+mailgun_address: cast-user-mailgun:7000
 
 db_address: cast-db-users-mongodb:27017
 

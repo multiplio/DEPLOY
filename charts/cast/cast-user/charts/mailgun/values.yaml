@@ -14,17 +14,10 @@ fullnameOverride: ""
 
 service:
   type: ClusterIP
-  port: 8000
+  port: 7000
 
-ingress:
-  enabled: false
-  annotations: {}
-  hosts: []
-  tls: []
-
-environment:
+env:
   PROGRAM_ALIAS: mailgun
-  NODE_ENV: production
   LOG_LEVEL: debug
 
 secret: cast-mailgun
