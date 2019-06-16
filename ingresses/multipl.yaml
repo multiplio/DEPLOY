@@ -49,6 +49,10 @@ spec:
         backend:
           serviceName: cast-user-mailgun
           servicePort: 7000
+      - path: /subscribe/
+        backend:
+          serviceName: cast-user-mailgun
+          servicePort: 7000
 
       # cast-render
       - path: /post/
