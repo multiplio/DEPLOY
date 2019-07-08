@@ -16,5 +16,5 @@ spec:
   values:
     image:
       repository: gcr.io/multipl/cast-website
-      tag: 1.4.0
+      tag: 1.4.1
       pullPolicy: IfNotPresent
